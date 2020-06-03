@@ -1,11 +1,16 @@
 package br.com.musicnote.model;
 
+import java.util.Objects;
+
 public class Aluno {
 
     private String nome;
     private int numeroMatricula;
 
     public Aluno(String nome, int numeroMatricula) {
+        if (nome == null){
+            throw new NullPointerException("Nome não pode ser nulo");
+        }
         this.nome = nome;
         this.numeroMatricula = numeroMatricula;
     }
@@ -23,5 +28,17 @@ public class Aluno {
         return "Aluno: " +
                 "\nNome = " + this.nome +
                 "\nNumero de Matricula = " + this.numeroMatricula;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Aluno outroAluno = (Aluno) obj;
+        return this.nome.equals(outroAluno.nome);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, numeroMatricula);
     }
 }

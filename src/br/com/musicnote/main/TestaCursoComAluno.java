@@ -15,7 +15,7 @@ public class TestaCursoComAluno {
         baixoColecoes.adiciona(new Aula("Escalas Pentatônicas", 31));
         baixoColecoes.adiciona(new Aula("Escalas Menores", 18));
 
-        Aluno a1 = new Aluno("Fulano", 1234);
+        Aluno a1 = new Aluno("Fulano da silva", 1234);
         Aluno a2 = new Aluno("Cicrano", 5678);
         Aluno a3 = new Aluno("Beltrano", 9012);
 
@@ -27,5 +27,23 @@ public class TestaCursoComAluno {
         baixoColecoes.getAlunos().forEach(aluno -> {
             System.out.println(aluno);
         });
+
+        //Utilizando o método CONTAINS
+        System.out.println("O aluno " + a1.getNome() + " está matriculado?");
+        System.out.println(baixoColecoes.estaMatriculado(a1));
+
+        //Criação de um mesmo ALUNO e MATRICULA
+        Aluno silva = new Aluno("Fulano da silva", 1234);
+        System.out.println("E esse Silva, está matriculado?");
+        System.out.println(baixoColecoes.estaMatriculado(silva));
+
+        //Utilizando o EQUALS
+        System.out.println("O a1 é equals ao Fulano?");
+        System.out.println(a1.equals(silva));
+
+        //Comparando com HASHCODE
+        System.out.println("Utilizando o HashCode");
+        System.out.println(a1.hashCode() == silva.hashCode());
+
     }
 }
