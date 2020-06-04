@@ -6,7 +6,9 @@ public class Curso {
 
     private String nome;
     private String instrutor;
-    private List<Aula> aulas = new LinkedList<Aula>();
+    private List<Aula> aulas = new LinkedList<>();
+    private Map<Integer, Aluno> matriculaParaAluno = new HashMap<>();
+//    O MAP é muito útil para fazer associações
 //    private Set<Aluno> alunos = new HashSet<>();
 //    HASHSET faz uma busca mais rápida dentro da array, porém não garante a ordem
 
@@ -16,16 +18,6 @@ public class Curso {
     public Curso(String nome, String instrutor) {
         this.nome = nome;
         this.instrutor = instrutor;
-    }
-
-    public String getNome() {
-
-        return nome;
-    }
-
-    public String getInstrutor() {
-
-        return instrutor;
     }
 
     //Lista imutável. Não consigo modificar essa lista
@@ -57,8 +49,13 @@ public class Curso {
                 "\nAulas = " + aulas;
     }
 
+//    Adiciona o ALUNO dentro do SET e faz a relação entre MATRÍCULA  e ALUNO.
+//    Cria-se como se fosse uma plamilha com duas colunas
     public void matricula(Aluno aluno) {
+
         this.alunos.add(aluno);
+        this.matriculaParaAluno.put(aluno.getNumeroMatricula(), aluno);
+//        O método PUT insere dentro do MAP
     }
 
     public Set<Aluno> getAlunos() {
@@ -68,4 +65,10 @@ public class Curso {
     public boolean estaMatriculado(Aluno aluno) {
         return this.alunos.contains(aluno);
     }
+
+//    Deixamos nossa busca mais simples
+    public Aluno buscaMatriculado(int numero) {
+        return this.matriculaParaAluno.get(numero);
+        }
+
 }
