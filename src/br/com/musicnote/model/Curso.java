@@ -7,8 +7,11 @@ public class Curso {
     private String nome;
     private String instrutor;
     private List<Aula> aulas = new LinkedList<Aula>();
-    private Set<Aluno> alunos = new HashSet<>();
-    //Lista somente da Classe Aula
+//    private Set<Aluno> alunos = new HashSet<>();
+//    HASHSET faz uma busca mais rápida dentro da array, porém não garante a ordem
+
+    private Set<Aluno> alunos = new LinkedHashSet<>();
+//  LINKEDHASHSET guarda a ordem em que os elementos foram adicionados
 
     public Curso(String nome, String instrutor) {
         this.nome = nome;
